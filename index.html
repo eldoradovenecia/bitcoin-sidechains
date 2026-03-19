@@ -233,12 +233,15 @@
   <p class="section-subtitle reveal">Filtra por estado o busca por nombre, categoría o mecanismo de peg. Haz clic en una tarjeta para ver detalles.</p>
 
   <div class="filters-bar reveal">
-    <button class="filter-btn active" data-filter="all">Todas</button>
-    <button class="filter-btn" data-filter="active">✅ Activas</button>
-    <button class="filter-btn" data-filter="development">🔄 En desarrollo</button>
-    <button class="filter-btn" data-filter="debate">⚠️ En debate</button>
-    <button class="filter-btn" data-filter="historical">📜 Históricas</button>
+    <button class="filter-btn active" data-filter="all" data-type="status">Todas</button>
+    <button class="filter-btn" data-filter="active" data-type="status">✅ Activas</button>
+    <button class="filter-btn" data-filter="development" data-type="status">🔄 En desarrollo</button>
+    <button class="filter-btn" data-filter="debate" data-type="status">⚠️ En debate</button>
+    <button class="filter-btn" data-filter="historical" data-type="status">📜 Históricas</button>
     <input type="text" class="search-input" id="search" placeholder="🔍 Buscar..." />
+  </div>
+  <div class="filters-bar filters-bar--categories reveal" id="category-filters">
+    <!-- populated by JS -->
   </div>
 
   <div class="cards-grid" id="cards-grid">

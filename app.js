@@ -3,6 +3,7 @@
    ============================================ */
 
 let activeFilter = 'all';
+let activeCategory = 'all';
 let searchQuery = '';
 
 const SIDECHAINS_DATA = [
@@ -393,8 +394,32 @@ const COMMUNITY_LABELS = {
 
 /* ---- LOAD DATA ---- */
 function loadData() {
+  renderCategoryFilters();
   renderCards(allSidechains);
   renderSpotlight(allSidechains.filter(s => s.highlight));
+}
+
+/* ---- CATEGORY FILTERS ---- */
+function renderCategoryFilters() {
+  const container = document.getElementById('category-filters');
+  if (!container) return;
+
+  const categories = ['all', ...new Set(allSidechains.map(s => s.category).sort())];
+
+  container.innerHTML = categories.map(cat => `
+    <button class="filter-btn cat ${cat === 'all' ? 'active' : ''}" data-cat="${cat}">
+      ${cat === 'all' ? 'Todas las categorías' : cat}
+    </button>
+  `).join('');
+
+  container.querySelectorAll('.filter-btn.cat').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.filter-btn.cat').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCategory = btn.dataset.cat;
+      applyFilters();
+    });
+  });
 }
 
 /* ---- CARDS ---- */
@@ -463,20 +488,21 @@ function cardHTML(s) {
 function applyFilters() {
   const q = searchQuery.toLowerCase();
   const filtered = allSidechains.filter(s => {
-    const matchesFilter = activeFilter === 'all' || s.status === activeFilter;
-    const matchesSearch = !q ||
+    const matchesStatus   = activeFilter === 'all' || s.status === activeFilter;
+    const matchesCategory = activeCategory === 'all' || s.category === activeCategory;
+    const matchesSearch   = !q ||
       s.name.toLowerCase().includes(q) ||
       s.description.toLowerCase().includes(q) ||
       s.category.toLowerCase().includes(q) ||
       s.peg.toLowerCase().includes(q);
-    return matchesFilter && matchesSearch;
+    return matchesStatus && matchesCategory && matchesSearch;
   });
   renderCards(filtered);
 }
 
-document.querySelectorAll('.filter-btn').forEach(btn => {
+document.querySelectorAll('.filter-btn[data-type="status"]').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.filter-btn[data-type="status"]').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeFilter = btn.dataset.filter;
     applyFilters();

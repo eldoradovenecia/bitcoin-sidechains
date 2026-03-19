@@ -421,6 +421,29 @@ section.full-width > .inner {
 
 .search-input::placeholder { color: var(--text-muted); }
 
+.filters-bar--categories {
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn.cat {
+  font-size: 0.72rem;
+  padding: 0.3rem 0.75rem;
+  border-color: rgba(99,102,241,0.25);
+  color: var(--text-muted);
+}
+
+.filter-btn.cat:hover {
+  border-color: #6366f1;
+  color: #a5b4fc;
+}
+
+.filter-btn.cat.active {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #fff;
+}
+
 /* ---- CARDS GRID ---- */
 .cards-grid {
   display: grid;
