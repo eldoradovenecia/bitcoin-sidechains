@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Sidechains — Ecosistema completo</title>
+  <meta name="description" content="Explora todas las sidechains de Bitcoin: históricas, activas, en desarrollo y en debate. Timeline, comparativas y análisis completo." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ======== NAV ======== -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="btc-icon">₿</div>
+    Bitcoin Sidechains
+  </a>
+  <ul class="nav-links">
+    <li><a href="#explainer">¿Qué son?</a></li>
+    <li><a href="#timeline">Historia</a></li>
+    <li><a href="#explorer">Explorador</a></li>
+    <li><a href="#spotlight">Destacados</a></li>
+    <li><a href="#debate">Debate</a></li>
+    <li><a href="#recursos">Recursos</a></li>
+  </ul>
+
+  <div class="share-menu-wrapper">
+    <button class="share-btn" id="share-btn" aria-label="Compartir o exportar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Compartir
+    </button>
+    <div class="share-dropdown" id="share-dropdown">
+      <button class="share-option" id="opt-copy">
+        <span class="share-icon">🔗</span> Copiar enlace
+      </button>
+      <button class="share-option" id="opt-native" style="display:none">
+        <span class="share-icon">📤</span> Compartir…
+      </button>
+      <div class="share-divider"></div>
+      <button class="share-option" id="opt-pdf">
+        <span class="share-icon">📄</span> Exportar como PDF
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<div class="hero" id="hero">
+  <div class="hero-badge reveal">
+    <span>₿</span> Ecosistema Bitcoin L2 · 2026
+  </div>
+  <h1 class="reveal" style="transition-delay:0.08s">El Universo de las<br /><span>Sidechains de Bitcoin</span></h1>
+  <p class="reveal" style="transition-delay:0.16s">Todas las cadenas laterales de Bitcoin: desde los primeros experimentos en 2011 hasta las propuestas más innovadoras de 2025–2026.</p>
+
+  <div class="stats-grid stagger">
+    <div class="stat-card reveal">
+      <div class="value" data-target="15" data-suffix="+">0</div>
+      <div class="label">Sidechains creadas</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="value" data-target="447" data-suffix="M+">0</div>
+      <div class="label">USD invertidos por VCs</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="value" data-target="80" data-suffix="+">0</div>
+      <div class="label">Proyectos L2 activos</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="value" data-target="2014" data-suffix="">0</div>
+      <div class="label">Año del concepto original</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== ¿QUÉ ES UNA SIDECHAIN? ======== -->
+<section id="explainer">
+  <div class="section-label reveal">Fundamentos</div>
+  <h2 class="section-title reveal">¿Qué es una sidechain de Bitcoin?</h2>
+  <p class="section-subtitle reveal">Una blockchain independiente conectada a Bitcoin mediante un mecanismo de anclaje bidireccional (two-way peg).</p>
+
+  <div class="explainer-grid">
+    <div class="explainer-text reveal-left">
+      <p>Las sidechains permiten mover BTC desde la cadena principal a una cadena alternativa — y de vuelta — sin necesidad de un intermediario centralizado (en teoría). Esto permite experimentar con nuevas funcionalidades sin modificar el protocolo base de Bitcoin.</p>
+      <p>El concepto fue formalizado en 2014 por Adam Back, Gregory Maxwell, Pieter Wuille y otros en el paper <em>"Enabling Blockchain Innovations with Pegged Sidechains"</em> — los mismos que luego fundarían Blockstream.</p>
+      <p>Existen varios tipos de mecanismos de peg:</p>
+      <p><strong style="color:var(--btc-orange)">Federaciones</strong> — un grupo de participantes conocidos custodia los BTC bloqueados (Liquid, RSK).</p>
+      <p><strong style="color:var(--btc-orange)">Hashrate Escrows</strong> — los mineros votan para autorizar retiros (Drivechain/BIP300).</p>
+      <p><strong style="color:var(--btc-orange)">ZK/BitVM</strong> — verificación matemática sin confianza, emergente (Citrea, Bison).</p>
+    </div>
+
+    <div class="peg-diagram reveal-right">
+      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.5rem">Two-Way Peg</div>
+      <div class="peg-row">
+        <div class="chain-box bitcoin">
+          <div class="chain-icon">₿</div>
+          <div class="chain-name">Bitcoin</div>
+          <div style="font-size:0.65rem;color:var(--text-muted);margin-top:0.3rem">Mainchain</div>
+        </div>
+        <div class="peg-arrow">
+          <span style="font-size:1rem">⇄</span>
+          <span>Peg</span>
+        </div>
+        <div class="chain-box sidechain">
+          <div class="chain-icon">⛓</div>
+          <div class="chain-name">Sidechain</div>
+          <div style="font-size:0.65rem;color:var(--text-muted);margin-top:0.3rem">Smart contracts, etc.</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;width:100%;margin-top:0.75rem">
+        <div style="background:var(--bg-section);border-radius:6px;padding:0.75rem;font-size:0.7rem;color:var(--text-secondary)">
+          <strong style="color:var(--btc-orange)">Lock →</strong><br/>
+          El BTC se bloquea en la mainchain
+        </div>
+        <div style="background:var(--bg-section);border-radius:6px;padding:0.75rem;font-size:0.7rem;color:var(--text-secondary)">
+          <strong style="color:#6366f1">← Burn</strong><br/>
+          El BTC en sidechain se destruye para liberar en mainchain
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TIMELINE ======== -->
+<section class="full-width" id="timeline">
+  <div class="inner">
+    <div class="section-label reveal">Historia</div>
+    <h2 class="section-title reveal">Línea del tiempo</h2>
+    <p class="section-subtitle reveal">Los hitos más importantes del ecosistema de sidechains de Bitcoin.</p>
+
+    <div class="timeline reveal">
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-event key">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2011</div>
+            <div class="timeline-desc">Namecoin: primer merged mining</div>
+          </div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2014</div>
+            <div class="timeline-desc">Paper original "Pegged Sidechains" (Blockstream)</div>
+          </div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2014</div>
+            <div class="timeline-desc">Counterparty: tokens sobre OP_RETURN</div>
+          </div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-desc">RSK comienza desarrollo</div>
+          </div>
+        </div>
+
+        <div class="timeline-event key">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2018 Ene</div>
+            <div class="timeline-desc">RSK mainnet lanzado</div>
+          </div>
+        </div>
+
+        <div class="timeline-event key">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2018 Sep</div>
+            <div class="timeline-desc">Liquid Network lanzado (Blockstream)</div>
+          </div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-desc">Stacks 2.0 con PoX</div>
+          </div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-desc">BIP300 debate reavivado (Luke Dashjr)</div>
+          </div>
+        </div>
+
+        <div class="timeline-event key">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2023–24</div>
+            <div class="timeline-desc">Boom Bitcoin L2: Core, Merlin, BEVM, Botanix, Fractal...</div>
+          </div>
+        </div>
+
+        <div class="timeline-event key">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2024–25</div>
+            <div class="timeline-desc">$447M+ VC · BitVM · ZK rollups · Babylon staking</div>
+          </div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-desc">BIP300 sin consenso · 80+ proyectos L2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== EXPLORADOR ======== -->
+<section id="explorer">
+  <div class="section-label reveal">Explorador</div>
+  <h2 class="section-title reveal">Todas las sidechains</h2>
+  <p class="section-subtitle reveal">Filtra por estado o busca por nombre, categoría o mecanismo de peg. Haz clic en una tarjeta para ver detalles.</p>
+
+  <div class="filters-bar reveal">
+    <button class="filter-btn active" data-filter="all">Todas</button>
+    <button class="filter-btn" data-filter="active">✅ Activas</button>
+    <button class="filter-btn" data-filter="development">🔄 En desarrollo</button>
+    <button class="filter-btn" data-filter="debate">⚠️ En debate</button>
+    <button class="filter-btn" data-filter="historical">📜 Históricas</button>
+    <input type="text" class="search-input" id="search" placeholder="🔍 Buscar..." />
+  </div>
+
+  <div class="cards-grid" id="cards-grid">
+    <!-- Populated by JS -->
+  </div>
+
+  <div class="empty-state" id="empty-state">
+    <div class="icon">🔍</div>
+    <div>No se encontraron sidechains con ese criterio.</div>
+  </div>
+</section>
+
+<!-- ======== SPOTLIGHT ======== -->
+<section class="full-width" id="spotlight">
+  <div class="inner">
+    <div class="section-label reveal">Proyectos destacados</div>
+    <h2 class="section-title reveal">Los más relevantes</h2>
+    <p class="section-subtitle reveal">Las sidechains con mayor impacto, comunidad o innovación técnica.</p>
+
+    <div class="spotlight-grid reveal">
+      <div class="spotlight-nav" id="spotlight-nav">
+        <!-- Populated by JS -->
+      </div>
+      <div id="spotlight-panel">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== DEBATE ======== -->
+<section id="debate">
+  <div class="section-label reveal">Controversia</div>
+  <h2 class="section-title reveal">El gran debate: Drivechain</h2>
+  <p class="section-subtitle reveal">BIP300 y BIP301 son la propuesta más polarizante de la historia reciente de Bitcoin.</p>
+
+  <div class="debate-box reveal">
+    <div class="debate-header">
+      <div class="debate-icon">⚡</div>
+      <div>
+        <h3>BIP300 / BIP301 — Drivechains</h3>
+        <p>Propuesto por Paul Sztorc · Recodificado por Luke Dashjr (2023) · Sin consenso en Bitcoin Core (2026)</p>
+      </div>
+    </div>
+
+    <div class="debate-columns">
+      <div class="debate-col favor">
+        <h4>✅ A favor</h4>
+        <ul>
+          <li>Peg completamente descentralizado, controlado por mineros (sin federación)</li>
+          <li>Permite probar nuevas ideas en sidechains sin cambiar Bitcoin base</li>
+          <li>Podría absorber los mejores casos de uso de altcoins hacia el ecosistema BTC</li>
+          <li>Solución potencial al problema del presupuesto de seguridad a largo plazo</li>
+          <li>Apoyado por Bitcoin Magazine CEO David Bailey y parte de la comunidad minera</li>
+        </ul>
+      </div>
+      <div class="debate-col contra">
+        <h4>❌ En contra</h4>
+        <ul>
+          <li>Introduce complejidad y nuevos vectores de ataque al protocolo base</li>
+          <li>Los mineros podrían robar fondos si actúan de forma coordinada maliciosa</li>
+          <li>Cambia el mecanismo de validación de transacciones de Bitcoin</li>
+          <li>Críticos como Peter Todd argumentan que los riesgos superan los beneficios</li>
+          <li>Sin consenso de Bitcoin Core developers después de años de debate</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="debate-status">
+      <span class="status-pill">Sin consenso</span>
+      Estado actual (2026): BIP300 está implementado como testnet pero no ha logrado activación en mainnet. El debate sigue abierto en la comunidad Bitcoin.
+    </div>
+  </div>
+</section>
+
+<!-- ======== RECURSOS ======== -->
+<section id="recursos">
+  <div class="section-label reveal">Para profundizar</div>
+  <h2 class="section-title reveal">Recursos recomendados</h2>
+  <p class="section-subtitle reveal">Fuentes primarias, artículos técnicos y comunidades donde seguir el ecosistema.</p>
+
+  <div class="resources-grid stagger">
+    <a href="https://bitcoinops.org/en/topics/sidechains/" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">📡</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Bitcoin Optech</div>
+        <div>Sidechains: documentación técnica</div>
+      </div>
+    </a>
+    <a href="https://bitcoinmagazine.com/technical/bitcoin-layer-2-sidechains" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">📰</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Bitcoin Magazine</div>
+        <div>Bitcoin Layer 2: Sidechains</div>
+      </div>
+    </a>
+    <a href="https://rootstock.io/blog/sidechains-drivechains-and-rsk-2-way-peg-design/" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">🔗</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Rootstock Blog</div>
+        <div>Sidechains, Drivechains y two-way peg</div>
+      </div>
+    </a>
+    <a href="https://medium.com/rootstock-tech-blog/bitcoin-sidechains-74a72ceba35d" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">📖</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Historia completa</div>
+        <div>Bitcoin Sidechains (Sergio Lerner, RSK)</div>
+      </div>
+    </a>
+    <a href="https://petertodd.org/2023/drivechains" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">🔍</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Peter Todd</div>
+        <div>Drivechains: A Detailed Analysis</div>
+      </div>
+    </a>
+    <a href="https://www.drivechain.info" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">⛓</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Drivechain.info</div>
+        <div>Sitio oficial de BIP300/301</div>
+      </div>
+    </a>
+    <a href="https://liquid.net" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">💧</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Liquid Network</div>
+        <div>Sidechain de Blockstream</div>
+      </div>
+    </a>
+    <a href="https://rootstock.io" target="_blank" rel="noopener" class="resource-link reveal">
+      <span class="icon">🌱</span>
+      <div>
+        <div style="font-weight:600;color:var(--text-primary)">Rootstock (RSK)</div>
+        <div>Smart contracts en Bitcoin</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div style="margin-bottom:0.5rem;font-size:1.2rem">₿</div>
+  <div><strong>Bitcoin Sidechains Dashboard</strong> · Datos actualizados a marzo 2026</div>
+  <div style="margin-top:0.5rem">
+    Fuentes: <a href="https://bitcoinops.org/en/topics/sidechains/" target="_blank">Bitcoin Optech</a> ·
+    <a href="https://bitcoinmagazine.com" target="_blank">Bitcoin Magazine</a> ·
+    <a href="https://rootstock.io" target="_blank">Rootstock</a> ·
+    <a href="https://cointelegraph.com" target="_blank">CoinTelegraph</a>
+  </div>
+</footer>
+
+<!-- ======== MODAL ======== -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
