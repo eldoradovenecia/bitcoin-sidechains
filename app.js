@@ -671,6 +671,16 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('[data-target]').forEach(el => observer.observe(el));
 
+/* ---- FAQ ACCORDION ---- */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
 /* ---- THEME TOGGLE ---- */
 (function initTheme() {
   const btn = document.getElementById('theme-toggle');

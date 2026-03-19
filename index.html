@@ -25,6 +25,7 @@
     <li><a href="#comparador">Comparar</a></li>
     <li><a href="#spotlight">Destacados</a></li>
     <li><a href="#debate">Debate</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#recursos">Recursos</a></li>
   </ul>
 
@@ -352,6 +353,99 @@
     <div class="debate-status">
       <span class="status-pill">Sin consenso</span>
       Estado actual (2026): BIP300 está implementado como testnet pero no ha logrado activación en mainnet. El debate sigue abierto en la comunidad Bitcoin.
+    </div>
+  </div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section class="full-width" id="faq">
+  <div class="inner">
+    <div class="section-label reveal">Preguntas frecuentes</div>
+    <h2 class="section-title reveal">FAQ</h2>
+    <p class="section-subtitle reveal">Las dudas más comunes sobre sidechains, L2s y el ecosistema Bitcoin.</p>
+
+    <div class="faq-list reveal" id="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Cuál es la diferencia entre una sidechain y una Layer 2?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Todos los términos se usan indistintamente pero técnicamente son distintos. Una <strong>sidechain</strong> es una blockchain independiente con su propio mecanismo de consenso, conectada a Bitcoin mediante un two-way peg. Una <strong>Layer 2</strong> es cualquier solución que procesa transacciones fuera de la cadena principal pero hereda su seguridad. Lightning Network es un L2 puro (canales de pago); Liquid es una sidechain. Muchos proyectos actuales como Merlin o B² Network se llaman L2 aunque técnicamente son sidechains con bridges.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Son seguros los BTC que se mueven a una sidechain?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Depende del mecanismo de peg. Las <strong>federaciones</strong> (Liquid, RSK) requieren confiar en un grupo de custodios — si la mayoría es comprometida, los fondos están en riesgo. Los <strong>bridges centralizados</strong> (Merlin, Botanix en fase temprana) son incluso más riesgosos. Los <strong>ZK/BitVM</strong> (Citrea, Bitlayer) buscan eliminar esa confianza mediante pruebas matemáticas, pero aún son experimentales. Regla general: nunca muevas a una sidechain más BTC del que estás dispuesto a perder.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Por qué no se añaden estas funciones directamente a Bitcoin?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Bitcoin prioriza deliberadamente la <strong>seguridad, descentralización y simplicidad</strong> sobre la expresividad. Añadir smart contracts complejos o nuevas reglas al protocolo base requiere consenso de toda la red (mineros, nodos, desarrolladores, usuarios) — un proceso extremadamente lento y conservador. Las sidechains permiten experimentar con nuevas ideas sin poner en riesgo la capa base, que muchos consideran la "reserva de valor" que no debe tocarse.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Qué es el "problema del presupuesto de seguridad" de Bitcoin?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Los mineros de Bitcoin son recompensados con nuevos BTC (subsidio de bloque) + fees de transacción. Cada ~4 años el subsidio se reduce a la mitad (halving). Para 2140 no habrá más subsidio y los mineros solo vivirán de las fees. Si el volumen de transacciones en la mainchain es bajo, las fees pueden ser insuficientes para incentivar el hashrate necesario para la seguridad de la red. Sidechains como Drivechain o Stacks proponen formas de llevar actividad económica al ecosistema Bitcoin que genere más fees para los mineros.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Ordinals y BRC-20 son realmente sidechains?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. Ordinals y BRC-20 no son sidechains ni L2 — todo ocurre <strong>directamente en la blockchain de Bitcoin</strong>, sin cadena paralela ni bridge. Ordinals inscribe datos en satoshis usando el campo witness de SegWit; BRC-20 usa esas inscripciones para simular tokens. Su controversia es precisamente esa: en lugar de escalar Bitcoin, aumentan la carga en la cadena principal, elevando las fees y el tamaño de los bloques. Los incluimos en este explorador por su relevancia en el ecosistema.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Cuál es la sidechain más usada actualmente?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Lightning Network</strong> es la más usada en volumen de pagos, con miles de nodos activos y adopción en países como El Salvador. En cuanto a DeFi, <strong>RSK (Rootstock)</strong> tiene el ecosistema más maduro con proyectos como Sovryn y Money on Chain activos desde 2018. <strong>Liquid</strong> domina en el nicho de trading entre exchanges. En 2024-2025, <strong>Merlin Chain</strong> y <strong>Core Chain</strong> han generado mucha actividad especulativa, aunque con menor descentralización.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Qué es BitVM y por qué es importante para las sidechains?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>BitVM (publicado en 2023 por Robin Linus) es una técnica que permite verificar computación arbitraria en Bitcoin usando solo transacciones existentes, sin cambiar el protocolo base. Es importante porque hace posible <strong>bridges trustless (sin confianza)</strong> con Bitcoin: en lugar de confiar en una federación, los retiros de fondos pueden ser disputados matemáticamente on-chain. Proyectos como Citrea y Bitlayer lo están usando para construir la siguiente generación de sidechains con seguridad real anclada en Bitcoin.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Puede una sidechain "robar" mis BTC?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>En sidechains federadas, sí — si la mayoría de los custodios de la federación actúan de forma maliciosa o son hackeados. En sidechains con bridges centralizados, el riesgo es aún mayor. En protocolos basados en ZK o BitVM, el riesgo teórico es mucho menor porque la liberación de fondos requiere pruebas matemáticas válidas. Por eso la descentralización del peg es uno de los debates más importantes del ecosistema. Nunca muevas a una sidechain fondos que no puedas permitirte perder.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
