@@ -670,6 +670,27 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('[data-target]').forEach(el => observer.observe(el));
 
+/* ---- THEME TOGGLE ---- */
+(function initTheme() {
+  const btn = document.getElementById('theme-toggle');
+  const icon = btn.querySelector('.theme-icon');
+  const html = document.documentElement;
+
+  const saved = localStorage.getItem('btc-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isLight = saved ? saved === 'light' : !prefersDark;
+
+  function setTheme(light) {
+    html.classList.toggle('light', light);
+    icon.textContent = light ? '☀️' : '🌙';
+    localStorage.setItem('btc-theme', light ? 'light' : 'dark');
+  }
+
+  setTheme(isLight);
+
+  btn.addEventListener('click', () => setTheme(!html.classList.contains('light')));
+})();
+
 /* ---- SHARE / EXPORT ---- */
 function showToast(msg) {
   let toast = document.getElementById('toast');
