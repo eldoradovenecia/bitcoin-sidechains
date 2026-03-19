@@ -28,44 +28,145 @@
 
 /* ---- LIGHT MODE ---- */
 html.light {
-  --btc-orange: #d97706;
-  --btc-orange-dim: rgba(217, 119, 6, 0.1);
-  --btc-orange-glow: rgba(217, 119, 6, 0.3);
-  --bg-primary: #f8f7f4;
+  --btc-orange: #e07b00;
+  --btc-orange-dim: rgba(224, 123, 0, 0.1);
+  --btc-orange-glow: rgba(224, 123, 0, 0.25);
+  --bg-primary: #fafafa;
   --bg-card: #ffffff;
-  --bg-card-hover: #f3f0eb;
-  --bg-section: #f0ede8;
-  --border: #e0dbd2;
-  --border-accent: rgba(217, 119, 6, 0.3);
-  --text-primary: #1a1612;
-  --text-secondary: #5c5347;
-  --text-muted: #a89f94;
-  --green: #16a34a;
-  --yellow: #ca8a04;
-  --red: #dc2626;
-  --blue: #2563eb;
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
-  --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+  --bg-card-hover: #f5f3ff;
+  --bg-section: #f4f4f5;
+  --border: #e4e4e7;
+  --border-accent: rgba(224, 123, 0, 0.35);
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --green: #15803d;
+  --yellow: #b45309;
+  --red: #b91c1c;
+  --blue: #1d4ed8;
+  --shadow: 0 4px 24px rgba(0,0,0,0.07);
+  --shadow-card: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+html.light body {
+  background: var(--bg-primary);
 }
 
 html.light nav {
-  background: rgba(248,247,244,0.92);
+  background: rgba(250,250,250,0.9);
+  border-bottom-color: #e4e4e7;
+  box-shadow: 0 1px 0 #e4e4e7;
 }
 
 html.light .hero {
-  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(217,119,6,0.07), transparent);
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(224,123,0,0.08), transparent);
+  border-bottom-color: #e4e4e7;
+}
+
+html.light .hero h1 { color: #18181b; }
+
+html.light .hero-badge {
+  background: rgba(224,123,0,0.08);
+  border-color: rgba(224,123,0,0.25);
+}
+
+html.light .stat-card {
+  background: #fff;
+  border-color: #e4e4e7;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+html.light .sidechain-card {
+  background: #fff;
+  border-color: #e4e4e7;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+html.light .sidechain-card:hover {
+  background: #fafafe;
+  border-color: rgba(224,123,0,0.4);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+html.light .category-tag {
+  background: rgba(224,123,0,0.09);
+  color: #b45309;
+}
+
+html.light .filter-btn {
+  background: #fff;
+  border-color: #d4d4d8;
+  color: #52525b;
+}
+
+html.light .filter-btn:hover {
+  border-color: var(--btc-orange);
+  color: var(--btc-orange);
+  background: rgba(224,123,0,0.05);
+}
+
+html.light .filter-btn.active {
+  background: var(--btc-orange);
+  border-color: var(--btc-orange);
+  color: #fff;
+}
+
+html.light .filter-btn.cat { border-color: #c4b5fd; color: #7c3aed; }
+html.light .filter-btn.cat:hover { background: rgba(124,58,237,0.06); color: #6d28d9; }
+html.light .filter-btn.cat.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+
+html.light .search-input {
+  background: #fff;
+  border-color: #d4d4d8;
+  color: #18181b;
 }
 
 html.light .timeline-line {
-  background: linear-gradient(90deg, var(--border), var(--btc-orange), var(--border));
+  background: linear-gradient(90deg, #e4e4e7, var(--btc-orange), #e4e4e7);
 }
 
-html.light .status-badge.active   { background: rgba(22,163,74,0.1);  }
-html.light .status-badge.development { background: rgba(37,99,235,0.1); }
-html.light .status-badge.debate   { background: rgba(202,138,4,0.1);  }
-html.light .status-badge.historical  { background: rgba(0,0,0,0.04);   }
+html.light .timeline-dot { background: #f4f4f5; border-color: #d4d4d8; }
+html.light .timeline-event.key .timeline-dot { background: var(--btc-orange); border-color: var(--btc-orange); }
 
-html.light .debate-header { background: rgba(202,138,4,0.06); }
+html.light .peg-diagram { background: #fff; border-color: #e4e4e7; }
+html.light .chain-box { background: #f4f4f5; border-color: #e4e4e7; }
+
+html.light .status-badge.active      { background: rgba(21,128,61,0.1);  color: #15803d; border-color: rgba(21,128,61,0.25); }
+html.light .status-badge.development { background: rgba(29,78,216,0.1);  color: #1d4ed8; border-color: rgba(29,78,216,0.25); }
+html.light .status-badge.debate      { background: rgba(180,83,9,0.1);   color: #b45309; border-color: rgba(180,83,9,0.25);  }
+html.light .status-badge.historical  { background: rgba(0,0,0,0.05);     color: #71717a; border-color: #d4d4d8;              }
+
+html.light .comm-dot.filled { background: var(--btc-orange); }
+
+html.light .spotlight-tab { background: #f4f4f5; border-color: #e4e4e7; color: #52525b; }
+html.light .spotlight-tab:hover { background: #fff; border-color: #d4d4d8; }
+html.light .spotlight-tab.active { background: rgba(224,123,0,0.1); border-color: var(--btc-orange); color: var(--btc-orange); }
+html.light .spotlight-content { background: #fff; border-color: #e4e4e7; }
+
+html.light .pros-cons-box { background: #f9f9fb; }
+
+html.light .debate-box { background: #fff; border-color: #e4e4e7; }
+html.light .debate-header { background: rgba(180,83,9,0.05); border-bottom-color: rgba(180,83,9,0.15); }
+html.light .debate-col { color: #52525b; }
+html.light .debate-status { background: #f9f9fb; border-top-color: #e4e4e7; }
+html.light .status-pill { background: rgba(180,83,9,0.1); color: #b45309; border-color: rgba(180,83,9,0.25); }
+
+html.light .resource-link { background: #fff; border-color: #e4e4e7; }
+html.light .resource-link:hover { background: #fafafe; border-color: rgba(224,123,0,0.35); }
+
+html.light .share-btn { background: rgba(224,123,0,0.08); border-color: rgba(224,123,0,0.25); }
+html.light .share-dropdown { background: #fff; border-color: #e4e4e7; }
+html.light .share-option { color: #52525b; }
+html.light .share-option:hover { background: #f4f4f5; color: #18181b; }
+
+html.light .theme-toggle { background: #fff; border-color: #d4d4d8; }
+
+html.light .toast { background: #fff; border-color: rgba(224,123,0,0.3); color: #18181b; }
+
+html.light .modal { background: #fff; border-color: #e4e4e7; }
+html.light .modal-close { background: #f4f4f5; border-color: #e4e4e7; color: #52525b; }
+
+html.light footer { border-top-color: #e4e4e7; color: #a1a1aa; }
 
 /* smooth transition on theme change */
 body, nav, .sidechain-card, .stat-card, .peg-diagram,
