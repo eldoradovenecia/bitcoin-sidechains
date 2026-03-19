@@ -397,6 +397,7 @@ function loadData() {
   renderCategoryFilters();
   renderCards(allSidechains);
   renderSpotlight(allSidechains.filter(s => s.highlight));
+  initComparator();
 }
 
 /* ---- CATEGORY FILTERS ---- */
@@ -690,6 +691,84 @@ document.querySelectorAll('[data-target]').forEach(el => observer.observe(el));
 
   btn.addEventListener('click', () => setTheme(!html.classList.contains('light')));
 })();
+
+/* ---- COMPARADOR ---- */
+function initComparator() {
+  const selects = [0, 1, 2].map(i => document.getElementById(`cmp-${i}`));
+  const wrapper = document.getElementById('compare-table-wrapper');
+  if (!selects[0] || !wrapper) return;
+
+  const sorted = [...allSidechains].sort((a, b) => a.name.localeCompare(b.name));
+
+  selects.forEach(sel => {
+    sorted.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.id;
+      opt.textContent = s.name;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', renderCompareTable);
+  });
+
+  // default: preselect first two
+  if (sorted.length >= 2) {
+    selects[0].value = 'lightning';
+    selects[1].value = 'rsk';
+  }
+  renderCompareTable();
+}
+
+function renderCompareTable() {
+  const wrapper = document.getElementById('compare-table-wrapper');
+  const ids = [0, 1, 2].map(i => document.getElementById(`cmp-${i}`)?.value).filter(Boolean);
+  const items = ids.map(id => allSidechains.find(s => s.id === id)).filter(Boolean);
+
+  if (items.length < 2) {
+    wrapper.innerHTML = `<div class="compare-placeholder">Selecciona al menos 2 proyectos para comparar.</div>`;
+    return;
+  }
+
+  const communityBar = n => Array.from({length: 5}, (_, i) =>
+    `<div class="comm-dot ${i < n ? 'filled' : ''}"></div>`
+  ).join('');
+
+  const STATUS_MAP = { active: '✅ Activa', development: '🔄 En desarrollo', debate: '⚠️ En debate', historical: '📜 Histórica' };
+
+  const cols = items.map(s => `
+    <th>
+      <div class="compare-col-name">${s.name}</div>
+      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem">${s.category}</div>
+    </th>`).join('');
+
+  const row = (label, fn) => `
+    <tr>
+      <th class="row-label">${label}</th>
+      ${items.map(s => `<td>${fn(s)}</td>`).join('')}
+    </tr>`;
+
+  wrapper.innerHTML = `
+    <div class="compare-table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr><th></th>${cols}</tr>
+        </thead>
+        <tbody>
+          ${row('Estado', s => `<span class="status-badge ${s.status}">${STATUS_MAP[s.status]}</span>`)}
+          ${row('Año', s => `${s.month ? s.month + ' ' : ''}${s.year}`)}
+          ${row('Mecanismo peg', s => `<span style="color:var(--text-secondary)">${s.peg}</span>`)}
+          ${row('Comunidad', s => `<div class="compare-comm-bar">${communityBar(s.community)}</div>`)}
+          ${row('Ventajas', s => `<ul class="compare-pros">${s.pros.map(p => `<li>${p}</li>`).join('')}</ul>`)}
+          ${row('Desventajas', s => `<ul class="compare-cons">${s.cons.map(c => `<li>${c}</li>`).join('')}</ul>`)}
+          ${row('Sitio', s => `<a href="${s.url}" target="_blank" rel="noopener" class="card-link">Ver proyecto ↗</a>`)}
+        </tbody>
+      </table>
+    </div>`;
+
+  // animate new table
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    wrapper.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }));
+}
 
 /* ---- SHARE / EXPORT ---- */
 function showToast(msg) {

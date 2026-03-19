@@ -22,6 +22,7 @@
     <li><a href="#explainer">¿Qué son?</a></li>
     <li><a href="#timeline">Historia</a></li>
     <li><a href="#explorer">Explorador</a></li>
+    <li><a href="#comparador">Comparar</a></li>
     <li><a href="#spotlight">Destacados</a></li>
     <li><a href="#debate">Debate</a></li>
     <li><a href="#recursos">Recursos</a></li>
@@ -255,6 +256,40 @@
   <div class="empty-state" id="empty-state">
     <div class="icon">🔍</div>
     <div>No se encontraron sidechains con ese criterio.</div>
+  </div>
+</section>
+
+<!-- ======== COMPARADOR ======== -->
+<section class="full-width" id="comparador">
+  <div class="inner">
+    <div class="section-label reveal">Comparador</div>
+    <h2 class="section-title reveal">Compara sidechains</h2>
+    <p class="section-subtitle reveal">Selecciona hasta 3 proyectos para ver sus características lado a lado.</p>
+
+    <div class="compare-selectors reveal" id="compare-selectors">
+      <div class="compare-slot" data-slot="0">
+        <div class="compare-slot-label">Proyecto 1</div>
+        <select class="compare-select" id="cmp-0">
+          <option value="">— Seleccionar —</option>
+        </select>
+      </div>
+      <div class="compare-vs">VS</div>
+      <div class="compare-slot" data-slot="1">
+        <div class="compare-slot-label">Proyecto 2</div>
+        <select class="compare-select" id="cmp-1">
+          <option value="">— Seleccionar —</option>
+        </select>
+      </div>
+      <div class="compare-vs">VS</div>
+      <div class="compare-slot" data-slot="2">
+        <div class="compare-slot-label">Proyecto 3 <span class="optional">opcional</span></div>
+        <select class="compare-select" id="cmp-2">
+          <option value="">— Seleccionar —</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="compare-table-wrapper"></div>
   </div>
 </section>
 
