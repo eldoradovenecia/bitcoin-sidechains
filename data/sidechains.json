@@ -328,5 +328,35 @@
     "cons": ["Dependencia de dos ecosistemas aumenta superficie de ataque", "Bridge centralizado en etapas iniciales", "Posicionamiento confuso entre BTC y ETH ecosystems"],
     "url": "https://gobob.xyz",
     "highlight": false
+  },
+  {
+    "id": "ordinals",
+    "name": "Ordinals",
+    "year": 2023,
+    "month": "Ene",
+    "status": "active",
+    "community": 5,
+    "peg": "Inscriptions en satoshis (on-chain)",
+    "category": "NFTs / Inscripciones",
+    "description": "Protocolo que asigna números de serie a cada satoshi y permite inscribir datos arbitrarios (imágenes, texto, código) directamente en la blockchain de Bitcoin. No es una sidechain — todo vive on-chain en Bitcoin.",
+    "pros": ["Datos 100% on-chain en Bitcoin (máxima inmutabilidad)", "Sin token propio ni bridge necesario", "Generó el mayor boom de actividad en Bitcoin desde 2017"],
+    "cons": ["Incrementa el tamaño de los bloques y las fees de Bitcoin", "Controvertido: puristas BTC lo ven como spam en la cadena", "No es una sidechain ni L2 — no escala, al contrario"],
+    "url": "https://ordinals.com",
+    "highlight": false
+  },
+  {
+    "id": "brc20",
+    "name": "BRC-20",
+    "year": 2023,
+    "month": "Mar",
+    "status": "active",
+    "community": 4,
+    "peg": "Inscriptions JSON en satoshis",
+    "category": "Tokens / Fungibles",
+    "description": "Estándar experimental para crear tokens fungibles sobre Bitcoin usando inscripciones Ordinals con JSON. Inspirado en ERC-20 de Ethereum pero implementado de forma mucho más rudimentaria. No es una sidechain.",
+    "pros": ["Primer estándar de tokens fungibles nativos en Bitcoin", "Enorme liquidez y volumen en 2023-2024", "Compatible con cualquier wallet que soporte Ordinals"],
+    "cons": ["Extremadamente ineficiente: cada transferencia requiere 3 inscripciones", "Sin lógica de contrato real (solo texto JSON)", "Fuerte debate sobre si debería existir en Bitcoin"],
+    "url": "https://domo-2.gitbook.io/brc-20-experiment",
+    "highlight": false
   }
 ]
