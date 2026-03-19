@@ -323,6 +323,23 @@ const SIDECHAINS_DATA = [
   }
 ];
 
+// Lightning Network insertada al inicio por relevancia
+SIDECHAINS_DATA.unshift({
+  "id": "lightning",
+  "name": "Lightning Network",
+  "year": 2018,
+  "month": "Mar",
+  "status": "active",
+  "community": 5,
+  "peg": "Payment channels (HTLC)",
+  "category": "Pagos / L2",
+  "description": "La red de canales de pago más usada de Bitcoin. Permite transacciones instantáneas y de bajo costo entre nodos conectados mediante canales bidireccionales asegurados on-chain. No es una sidechain clásica, sino un protocolo L2 sobre Bitcoin.",
+  "pros": ["Mayor adopción de cualquier L2 de Bitcoin", "Transacciones en milisegundos sin esperar bloques", "Sin custodia — los fondos están en contratos on-chain de Bitcoin"],
+  "cons": ["Gestión de canales y liquidez compleja para usuarios", "No soporta smart contracts generales (solo pagos)", "Routing de pagos grandes puede fallar por falta de liquidez"],
+  "url": "https://lightning.network",
+  "highlight": true
+});
+
 let allSidechains = SIDECHAINS_DATA;
 
 const STATUS_LABELS = {
